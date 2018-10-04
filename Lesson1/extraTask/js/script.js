@@ -8,10 +8,7 @@ while (num>0) {
     num = (num - num % 10) / 10;
 }
 
-num = 1;
-for (var i = 0; i < 3; i++) {
-    num = num * prod;
-}
+prod = prod ** 3;
 
-num = num + ''
-alert(num[0] + num[1]);
+prod = prod + ''
+alert(prod[0] + prod[1]);
