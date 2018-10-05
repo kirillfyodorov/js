@@ -7,19 +7,15 @@ function main() {
     var parentElem = document.body;
 
     for (let i = 0; i < 7; i++) {
+        p = document.createElement('p');
         if (week[i] == 'сб' || week[i] == 'вск') {
-            p = document.createElement('p');
             p.innerHTML = ('<b>' + week[i] + '</b>');
-            parentElem.appendChild(p);
         } else if (week[i] == today) {
-            p = document.createElement('p');
             p.innerHTML = ('<i>' + week[i] + '</i>');
-            parentElem.appendChild(p);
         } else {
-            p = document.createElement('p');
             p.innerHTML = ('<span>' + week[i] + '</span>');
-            parentElem.appendChild(p);
         }
+        parentElem.appendChild(p);
     }
 
     let arr = ['42343', '3745654', '6432', '743252', '36754', '04112', '312'];
