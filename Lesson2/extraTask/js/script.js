@@ -3,14 +3,22 @@ function main() {
      
     let week = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вск'];
     let today = 'пт';
+    let p;
+    var parentElem = document.body;
 
     for (let i = 0; i < 7; i++) {
         if (week[i] == 'сб' || week[i] == 'вск') {
-            document.write('<b>' + week[i] + '</b><br>');
+            p = document.createElement('p');
+            p.innerHTML = ('<b>' + week[i] + '</b>');
+            parentElem.appendChild(p);
         } else if (week[i] == today) {
-            document.write('<i>' + week[i] + '</i><br>');
+            p = document.createElement('p');
+            p.innerHTML = ('<i>' + week[i] + '</i>');
+            parentElem.appendChild(p);
         } else {
-            document.write('<span>' + week[i] + '</span><br>');
+            p = document.createElement('p');
+            p.innerHTML = ('<span>' + week[i] + '</span>');
+            parentElem.appendChild(p);
         }
     }
 
