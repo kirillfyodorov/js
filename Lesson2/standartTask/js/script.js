@@ -50,6 +50,8 @@ function main() {
         && (typeof(article) != null) && (typeof(cost) != null) && article.length < 50) {
             mainList.expenses[article] = cost;
             i++;
+        } else {
+            alert('Данные введены некорректно');
         }
     }
 
