@@ -11,9 +11,8 @@ while (i < str.length) {
 }
 console.log(str);
 
-let str1 = str.slice(-6);
-str1 = str1.slice(0, -2) + 'o';
-console.log(str1);
+str = str.slice(0, -6) + "легко";
+console.log(str);
 
 let arr = [20, 33, 1, 'Человек', 2, 3];
 let exp = 0;
