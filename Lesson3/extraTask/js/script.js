@@ -45,7 +45,10 @@ function strFunc(s) {
             }
         }
     }
+    if (s.length > 50) {
+        s = s.slice(0, 50) + '...';
+    }
     console.log(s);
 }
 
-strFunc('       fsdfsdfsdfsd     ');
+strFunc('       fsdffsdfsdfdsfsdfdsfdsfdsfsdfdsfdsvsfdsfsdfsdsdfsdfsd     ');
