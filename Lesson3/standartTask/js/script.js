@@ -46,7 +46,7 @@ function main() {
         while (i < 4) {
             article = prompt('Статья необязательных расходов?', '');
             if ( (article != '') && (typeof(article) == 'string') &&
-            (typeof(article) != null) && article.length < 50) {
+            (article != null) && article.length < 50) {
                 mainList.optionalExpenses[i] = article;
                 i++;
             } else {
