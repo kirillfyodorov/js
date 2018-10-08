@@ -31,7 +31,7 @@ function main() {
             article = prompt('Введите обязательную статью расходов в этом месяце', '');
             cost = prompt('Во сколько обойдется?', '');
             if ( (article != '') && (cost != '') && (typeof(article) == 'string')
-            && (typeof(article) != null) && (typeof(cost) != null) && article.length < 50) {
+            && (article != null) && (typeof(cost) != null) && article.length < 50) {
                 mainList.expenses[article] = cost;
                 i++;
             } else {
