@@ -69,19 +69,28 @@ function main() {
             }
         },
         chooseIncome: function() {
-            let items;
+            let items,
+                log = 0;
             while (1) {
                 items = prompt('Что принесет дополнительный доход? (Перечислите через запятую)', '');
-                if (items == '' || typeof(items) != 'string' || items == null) {
-                    alert('Данные некорректны');
-                } else {
-                    mainList.income = items.split(', ');
+                mainList.income = items.split(', ');
+                for (let item of mainList.income) {
+                    if (item == '' || typeof (item) != 'string' || item == null || !isNaN(item)) {
+                        delete(mainList.income);
+                        alert('Данные некорректны');
+                        break;
+                    } else {
+                        log = 1;
+                        break;
+                    }
+                }
+                if (log == 1) {
                     break;
                 }
             }
             while (1) {
                 items = prompt('Может что-то еще?', '');
-                if (items == '' || typeof (items) != 'string') {
+                if (items == '' || typeof (items) != 'string' || !isNaN(items)) {
                     alert('Данные некорректны');
                 } else {
                     mainList.income.push(items);
@@ -95,8 +104,9 @@ function main() {
     console.log(mainList);
     mainList.chooseIncome(); 
 
+    console.log('Способы доп.заработка:');
     mainList.income.forEach(function(item, i) {
-        alert('Способы доп.заработка:\n' + (i+1) + ': ' + item);
+        console.log((i+1) + ': ' + item);
     });
     
     console.log("Наша программа включает в себя данные: ");
