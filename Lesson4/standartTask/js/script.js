@@ -68,13 +68,41 @@ function main() {
                 }
             }
         },
-        chooseincome: function() {
-            let items = prompt('Что принесет дополнительный доход? (Перечислите через запятую)', '');
-            mainList.income = items.split(', ');
+        chooseIncome: function() {
+            let items;
+            while (1) {
+                items = prompt('Что принесет дополнительный доход? (Перечислите через запятую)', '');
+                if (items == '' || typeof(items) != 'string' || items == null) {
+                    alert('Данные некорректны');
+                } else {
+                    mainList.income = items.split(', ');
+                    break;
+                }
+            }
+            while (1) {
+                items = prompt('Может что-то еще?', '');
+                if (items == '' || typeof (items) != 'string') {
+                    alert('Данные некорректны');
+                } else {
+                    mainList.income.push(items);
+                    break;
+                }
+            }
+            mainList.income.sort();
         }
     };
 
-    console.log(mainList); 
+    console.log(mainList);
+    mainList.chooseIncome(); 
+
+    mainList.income.forEach(function(item, i) {
+        alert('Способы доп.заработка:\n' + (i+1) + ': ' + item);
+    });
+    
+    console.log("Наша программа включает в себя данные: ");
+    for (let key in mainList) {
+        console.log(key);
+    }
 }
 
 main();
