@@ -3,7 +3,7 @@ function isInteger(num) {
 }
 
 function getFriendlyNumber(start, end) {
-    if (typeof (start) != 'number' || typeof (end) != 'number' || end < start || end < 2 || start < 1 || !isInteger(start) || !isInteger(end)) {
+    if (typeof (start) != 'number' || typeof (end) != 'number' || end < start || end < 1 || start < 1 || !isInteger(start) || !isInteger(end)) {
         return(false);
     } else {
         let arr = [];
