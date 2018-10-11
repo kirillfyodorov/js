@@ -32,8 +32,9 @@ function getFriendlyNumber(start, end) {
     }
 }
 
-module.exports = {
-    firstName: 'Kirill',
-    secondName: 'Fyodorov',
-    task: getFriendlyNumbers
-}
+console.log(getFriendlyNumber(1, 500000));
+// module.exports = {
+//     firstName: 'Kirill',
+//     secondName: 'Fyodorov',
+//     task: getFriendlyNumbers
+// }
