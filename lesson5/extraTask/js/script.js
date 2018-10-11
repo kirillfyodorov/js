@@ -9,8 +9,23 @@ function main() {
         year = date.getFullYear(),
         dayNumber = date.getUTCDay(),
         dayName,
-        dateStr = '' + hours + ':' + minutes + ':' + seconds + ' ';
+        dateStr = '';
 
+    if (hours < 10) {
+        dateStr = dateStr + '0' + hours + ':';
+    } else {
+        dateStr = dateStr + hours + ':';
+    }
+    if (minutes < 10) {
+        dateStr = dateStr + '0' + minutes + ':';
+    } else {
+        dateStr = dateStr + minutes + ':';
+    }
+    if (seconds < 10) {
+        dateStr = dateStr + '0' + seconds + ' ';
+    } else {
+        dateStr = dateStr + seconds + ' ';
+    }
     if (day < 10) {
         dateStr = dateStr + '0' + day + '.';
     } else {
