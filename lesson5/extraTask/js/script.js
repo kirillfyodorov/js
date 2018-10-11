@@ -67,9 +67,6 @@ function main() {
         document.body.appendChild(document.createElement('input'));
         document.body.appendChild(document.createElement('br'));
     }
-
-    
-
     let btn = document.createElement('button');
     btn.innerHTML = 'Рассчитать';
     document.body.appendChild(btn);
