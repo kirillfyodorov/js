@@ -29,7 +29,7 @@ a:active {
 
 .app {
   background-color: #faf8f5;
-  min-height: 800px;
+  min-height: 100vh;
 }
 
 .logo {
@@ -48,10 +48,10 @@ a:active {
 
 .title {
   width: 100%;
-  margin-top: 30px;
+  margin-top: 50px;
   font-weight: 500;
   font-size: 20px;
-  color: #262626;
+  color: #ff6a30;
   text-align: center;
 }
 
@@ -75,10 +75,11 @@ a:active {
   height: 35px;
   width: calc((100%/2) - 4px);
   border-radius: 2.5px;
-  background-color: #ffffff;
+  background-color: #999999;
+  opacity: 0.05;
   -webkit-box-shadow: 0px 2.5px 10px 0 rgba(1, 0, 42, 0.1);
           box-shadow: 0px 2.5px 10px 0 rgba(1, 0, 42, 0.1);
-  border: none;
+  border: 1px solid transparent;
   padding-left: 10px;
   margin-bottom: 10px;
   font-size: 14px;
@@ -99,6 +100,12 @@ a:active {
 
 .data .expenses-item::placeholder, .data .optionalexpenses-item::placeholder, .data .choose-income::placeholder, .data .choose-sum::placeholder, .data .choose-percent::placeholder {
   opacity: .3;
+}
+
+.data .expenses-item:focus, .data .optionalexpenses-item:focus, .data .choose-income:focus, .data .choose-sum:focus, .data .choose-percent:focus {
+  -webkit-box-shadow: 0px 2.5px 10px 0 rgba(255, 106, 48, 0.3);
+          box-shadow: 0px 2.5px 10px 0 rgba(255, 106, 48, 0.3);
+  border: 1px solid rgba(255, 106, 48, 0.3);
 }
 
 .data .expenses-item-btn, .data .optionalexpenses-btn, .data .count-budget-btn {
@@ -223,10 +230,11 @@ a:active {
   height: 35px;
   width: calc((100%/2) - 4px);
   border-radius: 2.5px;
-  background-color: #ffffff;
+  background-color: #999999;
+  opacity: 0.05;
   -webkit-box-shadow: 0px 2.5px 10px 0 rgba(1, 0, 42, 0.1);
           box-shadow: 0px 2.5px 10px 0 rgba(1, 0, 42, 0.1);
-  border: none;
+  border: 1px solid transparent;
   padding-left: 10px;
   margin-bottom: 10px;
   font-size: 14px;

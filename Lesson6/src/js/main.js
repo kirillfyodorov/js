@@ -22,10 +22,11 @@ function main() {
         percentValue = document.querySelector('#percent'),
         yearValue = document.querySelector('.year-value'),
         monthValue = document.querySelector('.month-value'),
-        dayValue = document.querySelector('.day-value');
+        dayValue = document.querySelector('.day-value'),
+        data = document.querySelector('.data'),
+        inputs = data.querySelectorAll('input');
 
         let money, time;
-
 
         expensesBtn.disabled = true;
         countBtn.disabled = true;
@@ -33,7 +34,10 @@ function main() {
         expensesBtn.classList.add('disabledBtn');
         countBtn.classList.add('disabledBtn');
         optionalExpensesBtn.classList.add('disabledBtn');
-
+        inputs.forEach(function (item, i, mas) {
+            item.readOnly = true;
+        });
+        checkSavings.disabled = true;
 
         startBtn.addEventListener('click', function() {
             while (isNaN(money) || money == '' || money == null) {
@@ -50,8 +54,16 @@ function main() {
 
             expensesBtn.disabled = false;
             optionalExpensesBtn.disabled = false;
+            checkSavings.disabled = false;
             expensesBtn.classList.remove('disabledBtn');
             optionalExpensesBtn.classList.remove('disabledBtn');
+            inputs.forEach(function(item, i, mas) {
+                if (i < mas.length - 2) {
+                    item.readOnly = false;
+                    item.style.opacity = '1';
+                    item.style.backgroundColor = '#fff';
+                }
+            });
         });
 
         
@@ -67,7 +79,7 @@ function main() {
                     log *= 0;
                 } else {
                     log *= 1;
-                    expensesItem[i].style.border = 'none';
+                    expensesItem[i].style.border = '1px solid transparent';
                 }
                 let cost = expensesItem[++i].value;
 
@@ -76,7 +88,7 @@ function main() {
                     log *= 0;
                 } else {
                     log *= 1;
-                    expensesItem[i].style.border = 'none';
+                    expensesItem[i].style.border = '1px solid transparent';
                 }
                 
                 mainList.expenses[article] = cost;
@@ -143,8 +155,22 @@ function main() {
         checkSavings.addEventListener('click', function() {
             if (mainList.savings == true) {
                 mainList.savings = false;
+                sumValue.style.backgroundColor = '#999';
+                sumValue.style.opacity = '0.05';
+                percentValue.style.backgroundColor = '#999';
+                percentValue.style.opacity = '0.05';
+                sumValue.value = '';
+                percentValue.value = '';
+                monthSavingsValue.textContent = '';
+                yearSavingsValue.textContent = '';
             } else {
                 mainList.savings = true;
+                sumValue.style.backgroundColor = '#fff';
+                sumValue.style.opacity = '1';
+                percentValue.style.backgroundColor = '#fff';
+                percentValue.style.opacity = '1';
+                sumValue.value = '';
+                percentValue.value = '';
             }
         });
 
@@ -182,6 +208,10 @@ function main() {
             income: [],
             savings: false
         };
+        sumValue.style.backgroundColor = '#999';
+        sumValue.style.opacity = '0.05';
+        percentValue.style.backgroundColor = '#999';
+        percentValue.style.opacity = '0.05';
 }
 
 main();
