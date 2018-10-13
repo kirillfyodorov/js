@@ -157,7 +157,7 @@ function main() {
 
         incomeItem.addEventListener('input', function() {
             incomeItem.addEventListener('keyup', function () {
-                incomeItem.value = incomeItem.value.replace(/[^а-яА-ЯёЁ]/ig, '');
+                incomeItem.value = incomeItem.value.replace(/[^а-яА-ЯёЁ\s,]/ig, '');
             });
             let items = incomeItem.value;
             mainList.income = items.split(', ');
