@@ -62,6 +62,8 @@ function main() {
                     item.readOnly = false;
                     item.style.opacity = '1';
                     item.style.backgroundColor = '#fff';
+                } else {
+                    item.readOnly = false;
                 }
             });
         });
@@ -107,6 +109,10 @@ function main() {
                 mas[i].addEventListener('keyup', function () {
                     mas[i].value = mas[i].value.replace(/[^0-9]/ig, '');
                 });
+            } else {
+                mas[i].addEventListener('keyup', function () {
+                    mas[i].value = mas[i].value.replace(/[^а-яА-ЯёЁ]/ig, '');
+                });
             }
         });
 
@@ -115,6 +121,7 @@ function main() {
                 mas[i].value = mas[i].value.replace(/[^а-яА-ЯёЁ]/ig, '');
             });
         });
+        
         
 
         optionalExpensesBtn.addEventListener('click', function() {
@@ -133,7 +140,7 @@ function main() {
                 mainList.moneyPerDay = +(((mainList.budget - +expensesValue.textContent) / 30).toFixed(1));
                 dayBudgetValue.textContent = mainList.moneyPerDay;
                 if (mainList.moneyPerDay < 100) {
-                    levelValue.textContent = 'Минимальный уровень достатка';
+                    levelValue.textContent = 'Минимальный уровень достатка. Следует сократить расходы!';
                 } else if (mainList.moneyPerDay >= 100 && mainList.moneyPerDay < 2000) {
                     levelValue.textContent = 'Средний уровень достатка';
                 } else if (mainList.moneyPerDay >= 2000) {
@@ -146,7 +153,12 @@ function main() {
             }
         });
 
+        
+
         incomeItem.addEventListener('input', function() {
+            incomeItem.addEventListener('keyup', function () {
+                incomeItem.value = incomeItem.value.replace(/[^а-яА-ЯёЁ]/ig, '');
+            });
             let items = incomeItem.value;
             mainList.income = items.split(', ');
             incomeValue.textContent = mainList.income;
@@ -185,6 +197,14 @@ function main() {
                 monthSavingsValue.textContent = mainList.monthIncome.toFixed(1);
                 yearSavingsValue.textContent = mainList.yearIncome.toFixed(1);
             }
+        });
+
+        sumValue.addEventListener('keyup', function () {
+            sumValue.value = sumValue.value.replace(/[^0-9]/ig, '');
+        });
+
+        percentValue.addEventListener('keyup', function () {
+            percentValue.value = percentValue.value.replace(/[^0-9]/ig, '');
         });
 
         percentValue.addEventListener('input', function () {

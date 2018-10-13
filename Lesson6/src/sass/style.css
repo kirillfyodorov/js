@@ -239,6 +239,8 @@ a:active {
   margin-bottom: 10px;
   font-size: 14px;
   color: #a7a7a7;
+  background-color: #fff;
+  opacity: 1;
   width: 80px;
   height: 30px;
   margin-left: 25px;
