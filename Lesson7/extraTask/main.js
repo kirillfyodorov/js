@@ -5,6 +5,10 @@ btn.addEventListener('click', function() {
     let pos = 0;
     let w = 50;
     let timer = setInterval(frame, 1);
+    div[0].style.width = w + 'px';
+    div[1].style.height = w + 'px';
+    div[2].style.width = w + 'px';
+    div[3].style.height = w + 'px';
     function frame() {
         if (pos == 350) {
             if (w == 750) {
