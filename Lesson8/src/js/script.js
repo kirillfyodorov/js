@@ -95,27 +95,27 @@ window.addEventListener('DOMContentLoaded', function() {
 
     //мягкий скролл
     let count = 0;
+    let top, id;
 
-    function softScroll(top, time) {
+    function softScroll() {
         let request = requestAnimationFrame(softScroll);
         count++;
-        console.log(count);
-        scrollBy(0, Math.floor(top / time));
-        if (count == time) {
+        scrollBy(0, top / 20);
+        if (count == 20) {
+            count = 0;
             cancelAnimationFrame(request);
-            return;
         }
     }
 
     let menu = document.querySelector('nav');
-    console.log(menu);
     menu.addEventListener('click', function(e) {
         let target = e.target;
         if (target && target.tagName == 'A') {
             e.preventDefault();
-            let id = target.href.slice(target.href.indexOf('#'), target.href.length),
-                top = document.querySelector(id).getBoundingClientRect().top;
-            softScroll(top, 500);
+            id = target.href.slice(target.href.indexOf('#'), target.href.length);
+            top = document.querySelector(id).getBoundingClientRect().top;
+            console.log(top);
+            softScroll();
         }
     });
 });
