@@ -93,5 +93,30 @@ window.addEventListener('DOMContentLoaded', function() {
 
     setClock('timer', deadLine);
 
+    //мягкий скролл
+    let count = 0;
+
+    function softScroll(top, time) {
+        let request = requestAnimationFrame(softScroll);
+        count++;
+        console.log(count);
+        scrollBy(0, Math.floor(top / time));
+        if (count == time) {
+            cancelAnimationFrame(request);
+            return;
+        }
+    }
+
+    let menu = document.querySelector('nav');
+    console.log(menu);
+    menu.addEventListener('click', function(e) {
+        let target = e.target;
+        if (target && target.tagName == 'A') {
+            e.preventDefault();
+            let id = target.href.slice(target.href.indexOf('#'), target.href.length),
+                top = document.querySelector(id).getBoundingClientRect().top;
+            softScroll(top, 500);
+        }
+    });
 });
 
