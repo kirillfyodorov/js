@@ -36,13 +36,19 @@ window.addEventListener('DOMContentLoaded', function() {
     });
 
     //ТАЙМЕР
-    let deadLine = '2018-10-21';
+    let deadLine = '2018-10-15';
 
     function getTimeRemaining(endTime) {
         let t = Date.parse(endTime) - Date.parse(new Date()),
             seconds = Math.floor((t / 1000) % 60),
             minutes = Math.floor((t / 1000 / 60) % 60),
             hours = Math.floor(t / 1000 / 60 / 60);
+        
+        if (Date.parse(endTime) < Date.parse(new Date())) {
+            seconds = '00';
+            minutes = '00';
+            hours = '00';
+        }
 
         if (Math.abs(seconds) < 10) {
             seconds = '0' + Math.abs(seconds);
@@ -58,12 +64,6 @@ window.addEventListener('DOMContentLoaded', function() {
             hours = '0' + Math.abs(hours);
         } else {
             hours = '' + Math.abs(hours);
-        }
-
-        if (Date.parse(endTime) < Date.parse(new Date())) {
-            seconds = '-' + seconds;
-            minutes = '-' + minutes;
-            hours = '-' + hours;
         }
 
         return({
