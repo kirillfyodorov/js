@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <input id="age" value="30">
+
+    <script>
+        let age = document.getElementById('age');
+
+        function showUser(surname, name) {
+        alert("Пользователь " + surname + " " + name + ", его возраст " + this.value);
+        }
+
+        showUser.apply(age, ['Fyodorov', 'Kirill']);
+    </script>
+</body>
+</html>
