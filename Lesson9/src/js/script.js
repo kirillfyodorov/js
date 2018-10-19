@@ -122,18 +122,6 @@ window.addEventListener('DOMContentLoaded', function() {
     //popup
     function getNameBrowser() {
         let ua = navigator.userAgent;
-        if (ua.search(/Chrome/) > 0) {
-            return 'Google Chrome';
-        }
-        if (ua.search(/Firefox/) > 0) {
-            return 'Firefox';
-        }
-        if (ua.search(/Opera/) > 0) {
-            return 'Opera';
-        }
-        if (ua.search(/Safari/) > 0) {
-            return 'Safari';
-        }
         if (ua.search(/Trident/) > 0) {
             return 'Internet Explorer';
         }
@@ -162,12 +150,16 @@ window.addEventListener('DOMContentLoaded', function() {
         close = document.querySelector('.popup-close');
 
     function displayModal() {
-        if (browser != 'Internet Explorer' && browser != 'Edge') {
+        if (document.documentElement.clientWidth < 992) {
+            overlay.classList.remove('overlay-display');
+        } else {
+            this.classList.add('more-splash');
+            if (browser != 'Internet Explorer' && browser != 'Edge') {
             overlay.classList.remove('overlay-display');
             popupAnimate();
         }
+        }
         overlay.style.display = 'block';
-        this.classList.add('more-splash');
         document.body.style.overflow = 'hidden';
     }
     
