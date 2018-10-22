@@ -700,3 +700,8 @@ header ul li:before {
 .overlay .popup-form__btn:hover {
   box-shadow: 0 0 10px #c78030;
 }
+.status img {
+  max-width: 50px;
+  max-height: 50px;
+  margin: 10px 0 0 0;
+}

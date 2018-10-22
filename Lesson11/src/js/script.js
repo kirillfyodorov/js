@@ -243,19 +243,19 @@ window.addEventListener('DOMContentLoaded', function() {
             let formData = new FormData(form); //получаем все данные с формы
 
             let obj = {}; // создаем объект для формата JSON
-            formData.forEach(function (value, i) {
-                obj[i] = value;
-            });
+            for (let i = 0; i < formData.length; i++) {
+                obj[formData[i].getAttribute('name')] = formData[i].value;
+            }
 
             request.send(formData); // отправляем данные на сервер
 
             request.addEventListener('readystatechange', function () { // смотрим состояние запроса
                 if (request.readyState < 4) {
-                    statusMessage.textContent = message.loading;
+                    statusMessage.innerHTML = '<img src=\"img/ajax-loader.gif\">';
                 } else if (request.readyState == 4 && request.status == 200) {
-                    statusMessage.textContent = message.success;
+                    statusMessage.innerHTML = '<img src=\"img/check.svg\">';
                 } else {
-                    statusMessage.textContent = message.failure;
+                    statusMessage.textContent = '<img src=\"img/warning.svg\">';
                 }
             });
 
