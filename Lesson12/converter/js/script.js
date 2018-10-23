@@ -14,10 +14,8 @@ inputRub.addEventListener('input', () => {
             return new Promise(function (resolve, reject) {
                 if (request.readyState === 4 && request.status == 200) {
                     resolve();
-                    console.log(request.readyState);
                 } else {
                     reject();
-                    console.log(request.readyState);
                 }
             });
         }
