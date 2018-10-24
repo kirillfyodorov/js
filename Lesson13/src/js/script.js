@@ -279,11 +279,13 @@ window.addEventListener('DOMContentLoaded', function() {
     //SLIDER
 
     let slideIndex = 1,
+        square = document.querySelectorAll('.square'),
         slides = document.querySelectorAll('.slider-item'),
         prev = document.querySelector('.prev'),
         next = document.querySelector('.next'),
         dotsWrap = document.querySelector('.slider-dots'),
         dots = document.querySelectorAll('.dot');
+
 
     function showSlides(n) {
 
@@ -294,19 +296,53 @@ window.addEventListener('DOMContentLoaded', function() {
             slideIndex = slides.length;
         }
 
-        slides.forEach((item) => item.style.display = 'none');
         dots.forEach((item) => item.classList.remove('dot-active'));
-
-        slides[slideIndex - 1].style.display = 'block';
         dots[slideIndex - 1].classList.add('dot-active');
+        slides.forEach((item) => {
+            item.style.display = 'none';
+            item.style.opacity = 1;
+        });
+        slides[slideIndex - 1].style.opacity = 0;
+        slides[slideIndex - 1].style.display = 'block';
+
+        let opacity = 0;
+        let opacityAnimation = setInterval(function () {
+            opacity += 0.05;
+
+            slides[slideIndex - 1].style.opacity = opacity;
+            if (opacity >= 1) {
+                clearInterval(opacityAnimation);
+            }
+        }, 50);
     }
     showSlides(slideIndex);
 
     function plusSlides(n) {
-        showSlides(slideIndex += n);
+        let opacity = 1;
+        let sliderAnimation = setInterval(function () {
+            opacity -= 0.05;
+
+            slides[slideIndex - 1].style.opacity = opacity;
+            if (opacity <= 0) {
+                showSlides(slideIndex += n);
+                clearInterval(sliderAnimation);
+            }
+        }, 5);
+        console.log(opacity);
+        
     }
     function currentSlide(n) {
-        showSlides(slideIndex = n);
+        let opacity = 1;
+        let sliderAnimation = setInterval(function () {
+            opacity -= 0.05;
+
+            slides[slideIndex - 1].style.opacity = opacity;
+            if (opacity <= 0) {
+                showSlides(slideIndex = n);
+                clearInterval(sliderAnimation);
+            }
+        }, 20);
+        
     }
 
     prev.addEventListener('click', () => {

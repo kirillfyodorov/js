@@ -349,8 +349,19 @@ header ul li:before {
   margin-top: 50px;
   position: relative;
 }
+.content .slider .wrap .slider-item .square {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 100;
+}
 .content .slider .wrap .slider-item img {
   width: 100%;
+}
+.clearfix::after {
+  content: '';
+  display: table;
+  clear: both;
 }
 .content .slider .wrap .prev {
   position: absolute;
