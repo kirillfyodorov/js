@@ -383,11 +383,16 @@ window.addEventListener('DOMContentLoaded', function() {
                     if (prevTotal > total) {
                         prevTotal = prevTotal - 250;
                         totalValue.textContent = prevTotal;
+                        if (prevTotal <= total) {
+                            clearInterval(timerId);
+                        }
 
                     } else if (prevTotal < total) {
                         prevTotal = prevTotal + 250;
                         totalValue.textContent = prevTotal;
-
+                        if (prevTotal >= total) {
+                            clearInterval(timerId);
+                        }
                     }
                 }, 1);
             }
