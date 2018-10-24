@@ -336,7 +336,7 @@ window.addEventListener('DOMContentLoaded', function() {
         prevTotal,
         timerId;
 
-        totalValue.textContent = 0;
+        totalValue.textContent = 0; 
 
         function startTimer() {
             if (restDays.value == '' || persons.value == '') {
