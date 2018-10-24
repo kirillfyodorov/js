@@ -87,6 +87,7 @@ img {
     height: 20px;
     border: 2px solid #ccc;
     border-radius: 3px;
+    cursor: pointer;
 }
 
 .checkbox-custom,
