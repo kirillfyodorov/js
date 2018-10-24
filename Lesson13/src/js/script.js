@@ -374,28 +374,29 @@ window.addEventListener('DOMContentLoaded', function() {
 
         totalValue.textContent = 0; 
 
-        function startTimer() {
-            if (restDays.value == '' || persons.value == '') {
+        function startTimer(b = prevTotal, c = total) {
+            clearInterval(timerId);
+            if (restDays.value == '' || persons.value == '' || restDays.value == '0' || persons.value == '0') {
                 total = 0;
-                totalValue.textContent = 0;
-            } else {
-                timerId = setInterval(function () {
-                    if (prevTotal > total) {
-                        prevTotal = prevTotal - 250;
-                        totalValue.textContent = prevTotal;
-                        if (prevTotal <= total) {
-                            clearInterval(timerId);
-                        }
-
-                    } else if (prevTotal < total) {
-                        prevTotal = prevTotal + 250;
-                        totalValue.textContent = prevTotal;
-                        if (prevTotal >= total) {
-                            clearInterval(timerId);
-                        }
+                c = 0;
+            } 
+            timerId = setInterval(function () {
+                if (b > c) {
+                    b = b - 250;
+                    totalValue.textContent = b;
+                    if (b <= c) {
+                        clearInterval(timerId);
                     }
-                }, 1);
-            }
+
+                } else if (b < c) {
+                    b = b + 250;
+                    totalValue.textContent = b;
+                    if (b >= c) {
+                        clearInterval(timerId);
+                    }
+        
+                }
+            }, 1);
         }
 
         persons.addEventListener('input', function() {
@@ -403,6 +404,7 @@ window.addEventListener('DOMContentLoaded', function() {
             this.value = this.value.replace(/[^0-9]/ig, '');
             personsSum = +this.value;
             total = (daysSum + personsSum) * 4000;
+            place.selectedIndex = 0;
             startTimer();
             
         });
@@ -411,7 +413,7 @@ window.addEventListener('DOMContentLoaded', function() {
             this.value = this.value.replace(/[^0-9]/ig, '');
             daysSum = +this.value;
             total = (daysSum + personsSum) * 4000;
-            console.log(prevTotal + ' ' + total);
+            place.selectedIndex = 0;
             startTimer();
         });
 
@@ -421,8 +423,8 @@ window.addEventListener('DOMContentLoaded', function() {
                 console.log(1);
             } else {
                 let a = total;
-                console.log(this.options[this.selectedIndex].value);
-                totalValue.textContent = a * this.options[this.selectedIndex].value;
+                total = a * this.options[this.selectedIndex].value;
+                startTimer(a, a * this.options[this.selectedIndex].value);
             }
         });
 });
