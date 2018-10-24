@@ -332,31 +332,46 @@ window.addEventListener('DOMContentLoaded', function() {
         totalValue = document.querySelector('.total'),
         personsSum = 0,
         daysSum = 0,
-        total = 0;
+        total = 0,
+        prevTotal,
+        timerId;
 
         totalValue.textContent = 0;
 
+        function startTimer() {
+            if (restDays.value == '' || persons.value == '') {
+                total = 0;
+                totalValue.textContent = 0;
+            } else {
+                timerId = setInterval(function () {
+                    if (prevTotal > total) {
+                        prevTotal = prevTotal - 250;
+                        totalValue.textContent = prevTotal;
+
+                    } else if (prevTotal < total) {
+                        prevTotal = prevTotal + 250;
+                        totalValue.textContent = prevTotal;
+
+                    }
+                }, 1);
+            }
+        }
+
         persons.addEventListener('input', function() {
+            prevTotal = total;
             this.value = this.value.replace(/[^0-9]/ig, '');
             personsSum = +this.value;
             total = (daysSum + personsSum) * 4000;
-
-            if (restDays.value == '' || this.value == '') {
-                totalValue.textContent = 0;
-            } else {
-                totalValue.textContent = total;
-            }
+            startTimer();
+            
         });
         restDays.addEventListener('input', function () {
+            prevTotal = total;
             this.value = this.value.replace(/[^0-9]/ig, '');
             daysSum = +this.value;
             total = (daysSum + personsSum) * 4000;
-
-            if (persons.value == '' || this.value == '') {
-                totalValue.textContent = 0;
-            } else {
-                totalValue.textContent = total;
-            }
+            console.log(prevTotal + ' ' + total);
+            startTimer();
         });
 
         place.addEventListener('change', function () {
