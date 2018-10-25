@@ -313,7 +313,7 @@ window.addEventListener('DOMContentLoaded', function() {
             if (opacity >= 1) {
                 clearInterval(opacityAnimation);
             }
-        }, 50);
+        }, 10);
     }
     showSlides(slideIndex);
 
@@ -341,7 +341,7 @@ window.addEventListener('DOMContentLoaded', function() {
                 showSlides(slideIndex = n);
                 clearInterval(sliderAnimation);
             }
-        }, 20);
+        }, 10);
         
     }
 
