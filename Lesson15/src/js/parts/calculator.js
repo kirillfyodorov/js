@@ -62,7 +62,6 @@ function calculator() {
             let a = total;
             total = a * +this.options[this.selectedIndex].value / koef;
             koef = this.options[this.selectedIndex].value;
-            console.log(total);
             startTimer(a, total);
         }
     });
