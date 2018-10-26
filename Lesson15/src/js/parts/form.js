@@ -50,7 +50,7 @@ function form() {
                     statusMessage.innerHTML = '<img src=\"img/check.svg\">';
                 })
                 .catch(() => {
-                    statusMessage.textContent = '<img src=\"img/warning.svg\">';
+                    statusMessage.innerHTML = '<img src=\"img/warning.svg\">';
                 })
                 .then(() => clearInput());
         });

@@ -30,7 +30,6 @@ function overlayModule() {
         let request = requestAnimationFrame(popupAnimate);
         t = t + 0.05;
         overlay.style.opacity = t;
-        console.log(t);
         if (t > 1) {
             t = 0;
             cancelAnimationFrame(request);

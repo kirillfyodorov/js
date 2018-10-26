@@ -1,6 +1,5 @@
 function telMask() {
     let telInput = document.querySelectorAll('input[type=tel]');
-    console.log(telInput);
 
     telInput.forEach(function (elem) {
         let input = elem,
@@ -11,7 +10,7 @@ function telMask() {
             input.value = input.value.replace(')', '');
             input.value = input.value.replace('-', '');
             let s = +input.value.slice(-1);
-            if (isNaN(s) || s == ' ') {
+            if ((isNaN(s) || s == ' ') && s!= 0) {
                 input.value = input.value.slice(0, input.value.length - 1);
             } else if (e.data == null && startL == 3) {
                 input.value = input.value.slice(0, input.value.length - 1);

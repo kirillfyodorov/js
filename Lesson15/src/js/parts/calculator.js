@@ -7,7 +7,8 @@ function calculator() {
         daysSum = 0,
         total = 0,
         prevTotal,
-        timerId;
+        timerId,
+        koef = 1;
 
     totalValue.textContent = 0;
 
@@ -19,14 +20,14 @@ function calculator() {
         }
         timerId = setInterval(function () {
             if (b > c) {
-                b = b - 250;
+                b = b - 100;
                 totalValue.textContent = b;
                 if (b <= c) {
                     clearInterval(timerId);
                 }
 
             } else if (b < c) {
-                b = b + 250;
+                b = b + 100;
                 totalValue.textContent = b;
                 if (b >= c) {
                     clearInterval(timerId);
@@ -57,11 +58,12 @@ function calculator() {
     place.addEventListener('change', function () {
         if (persons.value == '' || restDays.value == '') {
             totalValue.textContent = 0;
-            console.log(1);
         } else {
             let a = total;
-            total = a * this.options[this.selectedIndex].value;
-            startTimer(a, a * this.options[this.selectedIndex].value);
+            total = a * +this.options[this.selectedIndex].value / koef;
+            koef = this.options[this.selectedIndex].value;
+            console.log(total);
+            startTimer(a, total);
         }
     });
 }

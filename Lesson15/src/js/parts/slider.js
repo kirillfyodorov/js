@@ -48,7 +48,6 @@ function slider() {
                 clearInterval(sliderAnimation);
             }
         }, 5);
-        console.log(opacity);
 
     }
 

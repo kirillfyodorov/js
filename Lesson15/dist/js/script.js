@@ -104,7 +104,8 @@ function calculator() {
         daysSum = 0,
         total = 0,
         prevTotal,
-        timerId;
+        timerId,
+        koef = 1;
 
     totalValue.textContent = 0;
 
@@ -116,14 +117,14 @@ function calculator() {
         }
         timerId = setInterval(function () {
             if (b > c) {
-                b = b - 250;
+                b = b - 100;
                 totalValue.textContent = b;
                 if (b <= c) {
                     clearInterval(timerId);
                 }
 
             } else if (b < c) {
-                b = b + 250;
+                b = b + 100;
                 totalValue.textContent = b;
                 if (b >= c) {
                     clearInterval(timerId);
@@ -154,11 +155,12 @@ function calculator() {
     place.addEventListener('change', function () {
         if (persons.value == '' || restDays.value == '') {
             totalValue.textContent = 0;
-            console.log(1);
         } else {
             let a = total;
-            total = a * this.options[this.selectedIndex].value;
-            startTimer(a, a * this.options[this.selectedIndex].value);
+            total = a * +this.options[this.selectedIndex].value / koef;
+            koef = this.options[this.selectedIndex].value;
+            console.log(total);
+            startTimer(a, total);
         }
     });
 }
@@ -227,7 +229,7 @@ function form() {
                     statusMessage.innerHTML = '<img src=\"img/check.svg\">';
                 })
                 .catch(() => {
-                    statusMessage.textContent = '<img src=\"img/warning.svg\">';
+                    statusMessage.innerHTML = '<img src=\"img/warning.svg\">';
                 })
                 .then(() => clearInput());
         });
@@ -281,7 +283,6 @@ function overlayModule() {
         let request = requestAnimationFrame(popupAnimate);
         t = t + 0.05;
         overlay.style.opacity = t;
-        console.log(t);
         if (t > 1) {
             t = 0;
             cancelAnimationFrame(request);
@@ -380,7 +381,6 @@ function slider() {
                 clearInterval(sliderAnimation);
             }
         }, 5);
-        console.log(opacity);
 
     }
 
@@ -448,7 +448,6 @@ function softScrollModule() {
             e.preventDefault();
             id = target.href.slice(target.href.indexOf('#'), target.href.length);
             top = document.querySelector(id).getBoundingClientRect().top;
-            console.log(top);
             softScroll();
         }
     });
@@ -517,7 +516,6 @@ function tabs() {
 __webpack_require__.r(__webpack_exports__);
 function telMask() {
     let telInput = document.querySelectorAll('input[type=tel]');
-    console.log(telInput);
 
     telInput.forEach(function (elem) {
         let input = elem,
@@ -528,7 +526,7 @@ function telMask() {
             input.value = input.value.replace(')', '');
             input.value = input.value.replace('-', '');
             let s = +input.value.slice(-1);
-            if (isNaN(s) || s == ' ') {
+            if ((isNaN(s) || s == ' ') && s!= 0) {
                 input.value = input.value.slice(0, input.value.length - 1);
             } else if (e.data == null && startL == 3) {
                 input.value = input.value.slice(0, input.value.length - 1);

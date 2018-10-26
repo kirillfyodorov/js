@@ -19,7 +19,6 @@ function softScrollModule() {
             e.preventDefault();
             id = target.href.slice(target.href.indexOf('#'), target.href.length);
             top = document.querySelector(id).getBoundingClientRect().top;
-            console.log(top);
             softScroll();
         }
     });
