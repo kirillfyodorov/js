@@ -1,0 +1,12 @@
+@font-face {
+    font-family: "Circe ExtraBold";
+    src: url("Circe-ExtraBold.eot"); /* IE9 */
+    src: url("Circe-ExtraBold.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("Circe-ExtraBold.woff") format("woff"), /* chrome, firefox */
+    url("Circe-ExtraBold.ttf") format("truetype"), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+    url("Circe-ExtraBold.svg#Circe ExtraBold") format("svg"); /* iOS 4.1- */
+    font-style: normal;
+    font-weight: normal;
+}
+
+

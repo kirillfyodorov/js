@@ -24,4 +24,4 @@ function softScrollModule() {
     });
 }
 
-export default softScrollModule;
+module.exports = softScrollModule;

@@ -65,4 +65,4 @@ function overlayModule() {
     });
 }
 
-export default overlayModule;
+module.exports = overlayModule;

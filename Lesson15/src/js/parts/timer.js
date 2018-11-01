@@ -57,4 +57,4 @@ function timer() {
     setClock('timer', deadLine);
 }
 
-export default timer;
+module.exports = timer;

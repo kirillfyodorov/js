@@ -17,13 +17,14 @@ function form() {
                     request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
 
                     let formData = new FormData(form); //получаем все данные с формы
-
+                    console.log(formData.length);
                     let obj = {}; // создаем объект для формата JSON
                     for (let i = 0; i < formData.length; i++) {
                         obj[formData[i].getAttribute('name')] = formData[i].value;
+                        console.log(obj[formData[i].getAttribute('name')]);
                     }
 
-                    request.send(formData); // отправляем данные на сервер
+                    request.send(obj); // отправляем данные на сервер
 
                     request.addEventListener('readystatechange', function () { // смотрим состояние запроса
                         if (request.readyState < 4) {
@@ -59,4 +60,4 @@ function form() {
     sendForm('.form-contact');
 }
 
-export default form;
+module.exports = form;

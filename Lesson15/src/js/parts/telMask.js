@@ -30,4 +30,4 @@ function telMask() {
     });
 }
 
-export default telMask;
+module.exports = telMask;

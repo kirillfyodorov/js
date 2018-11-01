@@ -1,15 +1,16 @@
-import tabs from './parts/tabs';
-import timer from './parts/timer';
-import softScrollModule from './parts/softScroll';
-import overlayModule from './parts/overlayModule';
-import telMask from './parts/telMask';
-import form from './parts/form';
-import slider from './parts/slider';
-import calculator from './parts/calculator';
-
 window.addEventListener('DOMContentLoaded', function() {
-    
     'use ctrict';
+
+    let tabs = require('./parts/tabs'),
+        timer = require('./parts/timer'),
+        softScrollModule = require('./parts/softScroll'),
+        overlayModule = require('./parts/overlayModule'),
+        telMask = require('./parts/telMask'),
+        form = require('./parts/form'),
+        slider = require('./parts/slider'),
+        calculator = require('./parts/calculator');
+    
+    
     
     tabs();
     timer(); 

@@ -65,4 +65,4 @@ function calculator() {
         }
     });
 }
-export default calculator;
+module.exports = calculator;
